@@ -15,11 +15,11 @@ BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Libspf-alt is an implementation of the SRS specification as found at
+Libsrs_alt is an implementation of the SRS specification as found at
 http://spf.pobox.com/srs.html.
 
 %description -l pl
-Libspf-alt jest implementacj± specyfikacji SRS, która znajduje siê pod
+Libsrs_alt jest implementacj± specyfikacji SRS, która znajduje siê pod
 adresem http://spf.pobox.com/srs.html.
 
 %package devel
