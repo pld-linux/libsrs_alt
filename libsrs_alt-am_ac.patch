@@ -1,34 +1,39 @@
-diff -urN libsrs_alt-0.3.org/Makefile.am libsrs_alt-0.3/Makefile.am
---- libsrs_alt-0.3.org/Makefile.am	2004-07-18 17:10:33.955042344 +0200
-+++ libsrs_alt-0.3/Makefile.am	2004-07-18 17:15:17.249974968 +0200
-@@ -1,10 +1,10 @@
+diff -urN libsrs_alt-0.4.org/Makefile.am libsrs_alt-0.4/Makefile.am
+--- libsrs_alt-0.4.org/Makefile.am	2004-08-04 12:50:55.424922992 +0200
++++ libsrs_alt-0.4/Makefile.am	2004-08-04 12:55:20.599610312 +0200
+@@ -1,12 +1,12 @@
  SUBDIRS = src
  EXTRA_DIST = MTAs
  
--bin_PROGRAMS = test srs
-+bin_PROGRAMS = srs-test srs
+-bin_PROGRAMS = srs
+-noinst_PROGRAMS = test
++bin_PROGRAMS = srs-alt
++noinst_PROGRAMS = srs-alt-test
  
 -test_SOURCES = test.c
 -test_LDFLAGS = src/.libs/libsrs_alt.a
-+srs_test_SOURCES = test.c
-+srs_test_LDFLAGS = $(top_builddir)/src/libsrs_alt.la
++srs_alt_test_SOURCES = test.c
++srs_alt_test_LDADD =  $(top_builddir)/src/libsrs_alt.la
  
- srs_SOURCES = srs.c
+-srs_SOURCES = srs.c
 -srs_LDFLAGS = -lsrs_alt -Lsrc/
-+srs_LDFLAGS = $(top_builddir)/src/libsrs_alt.la
-diff -urN libsrs_alt-0.3.org/src/Makefile.am libsrs_alt-0.3/src/Makefile.am
---- libsrs_alt-0.3.org/src/Makefile.am	2004-07-18 17:10:33.892051920 +0200
-+++ libsrs_alt-0.3/src/Makefile.am	2004-07-18 17:18:06.699214768 +0200
-@@ -1,10 +1,5 @@
++srs_alt_SOURCES = srs.c
++srs_alt_LDADD = $(top_builddir)/src/libsrs_alt.la
+ 
+diff -urN libsrs_alt-0.4.org/src/Makefile.am libsrs_alt-0.4/src/Makefile.am
+--- libsrs_alt-0.4.org/src/Makefile.am	2004-08-04 12:50:55.420923600 +0200
++++ libsrs_alt-0.4/src/Makefile.am	2004-08-04 12:52:54.163871928 +0200
+@@ -1,12 +1,6 @@
 -AM_CFLAGS = 
--EXTRA_DIST = address.h hash.h srs_alt.h timestamp.h
--
+-EXTRA_DIST = address.h hash.h srs_alt.h timestamp.h hmac.h sha1.h
++noinst_HEADERS = address.h hash.h timestamp.h
+ include_HEADERS = srs_alt.h
+ 
 -lib_LIBRARIES = libsrs_alt.a
--libsrs_alt_a_SOURCES = address.c hash.c srs_alt.c timestamp.c
+-libsrs_alt_a_SOURCES = address.c hash.c srs_alt.c timestamp.c hmac.c sha1.c
 -libsrs_alt_a_CFLAGS = $(AM_CFLAGS)
 -libsrs_alt_a_LIBADD = $(LIBOBJS)
-+noinst_HEADERS = address.h hash.h timestamp.h
-+include_HEADERS = srs_alt.h
- 
+-
  lib_LTLIBRARIES = libsrs_alt.la
- libsrs_alt_la_LDFLAGS = -version-info 0:3 -lcrypto
+ libsrs_alt_la_LDFLAGS = -version-info 0:4
+ libsrs_alt_la_SOURCES = address.c hash.c srs_alt.c timestamp.c hmac.c sha1.c
