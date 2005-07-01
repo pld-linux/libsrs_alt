@@ -1,9 +1,37 @@
-diff -urN libsrs_alt-0.5.org/Makefile.am libsrs_alt-0.5/Makefile.am
---- libsrs_alt-0.5.org/Makefile.am	2004-10-07 13:10:24.038078493 +0200
-+++ libsrs_alt-0.5/Makefile.am	2004-10-07 13:12:26.174913541 +0200
-@@ -1,11 +1,11 @@
- SUBDIRS = src
+diff -urN libsrs_alt-1.0rc1.org/configure.ac libsrs_alt-1.0rc1/configure.ac
+--- libsrs_alt-1.0rc1.org/configure.ac	2005-04-02 01:34:08.000000000 +0200
++++ libsrs_alt-1.0rc1/configure.ac	2005-07-01 20:57:00.617461352 +0200
+@@ -26,8 +26,6 @@
+ 
+ # Checks for library functions.
+ AC_FUNC_FORK
+-AC_FUNC_MALLOC
+-AC_FUNC_REALLOC
+ AC_TYPE_SIGNAL
+ AC_FUNC_STRNLEN
+ AC_CHECK_LIB(socket, bind)
+diff -urN libsrs_alt-1.0rc1.org/lib/Makefile.am libsrs_alt-1.0rc1/lib/Makefile.am
+--- libsrs_alt-1.0rc1.org/lib/Makefile.am	2005-04-02 01:45:14.000000000 +0200
++++ libsrs_alt-1.0rc1/lib/Makefile.am	2005-07-01 20:52:10.028637568 +0200
+@@ -1,9 +1,5 @@
+ EXTRA_DIST = hmac.h sha1.h
+ 
+-noinst_LIBRARIES = libcompat.a
+-libcompat_a_SOURCES = hmac.c sha1.c
+-libcompat_a_LIBADD = $(LIBOBJS) $(ALLOCA)
+-
+ noinst_LTLIBRARIES = libcompat.la
+ libcompat_la_SOURCES = hmac.c sha1.c
+ libcompat_la_LIBADD = $(LIBOBJS) $(ALLOCA)
+diff -urN libsrs_alt-1.0rc1.org/Makefile.am libsrs_alt-1.0rc1/Makefile.am
+--- libsrs_alt-1.0rc1.org/Makefile.am	2005-04-02 01:04:02.000000000 +0200
++++ libsrs_alt-1.0rc1/Makefile.am	2005-07-01 20:56:24.160003728 +0200
+@@ -1,13 +1,13 @@
+ SUBDIRS = lib src .
  EXTRA_DIST = MTAs
+ 
+-LDADD = lib/libcompat.a
++LDADD = $(top_builddir)/lib/libcompat.la
  
 -bin_PROGRAMS = srs
 -noinst_PROGRAMS = test
@@ -19,20 +47,23 @@ diff -urN libsrs_alt-0.5.org/Makefile.am libsrs_alt-0.5/Makefile.am
 -srs_LDFLAGS = -lsrs_alt -Lsrc/ $(LIBOBJS)
 +srs_alt_SOURCES = srs.c
 +srs_alt_LDFLAGS = $(top_builddir)/src/libsrs_alt.la
-diff -urN libsrs_alt-0.5.org/src/Makefile.am libsrs_alt-0.5/src/Makefile.am
---- libsrs_alt-0.5.org/src/Makefile.am	2004-10-07 13:10:24.010084491 +0200
-+++ libsrs_alt-0.5/src/Makefile.am	2004-10-07 13:28:39.568386818 +0200
-@@ -1,11 +1,5 @@
--AM_CFLAGS =
--EXTRA_DIST = address.h hash.h srs_alt.h timestamp.h hmac.h sha1.h
--include_HEADERS = srs_alt.h
+diff -urN libsrs_alt-1.0rc1.org/src/Makefile.am libsrs_alt-1.0rc1/src/Makefile.am
+--- libsrs_alt-1.0rc1.org/src/Makefile.am	2005-04-02 01:56:23.000000000 +0200
++++ libsrs_alt-1.0rc1/src/Makefile.am	2005-07-01 20:52:51.044402224 +0200
+@@ -2,13 +2,9 @@
+ EXTRA_DIST = address.h hash.h srs_alt.h timestamp.h
+ include_HEADERS = srs_alt.h
+ 
+-LDADD = ../lib/libcompat.a
 -
 -lib_LIBRARIES = libsrs_alt.a
--libsrs_alt_a_SOURCES = address.c hash.c srs_alt.c timestamp.c hmac.c sha1.c
--# libsrs_alt_a_CFLAGS = $(AM_CFLAGS)
--libsrs_alt_a_LIBADD = $(LIBOBJS)
-+noinst_HEADERS = address.h hash.h timestamp.h hmac.h sha1.h
-+include_HEADERS = srs_alt.h
+-libsrs_alt_a_SOURCES = address.c hash.c srs_alt.c timestamp.c
+-libsrs_alt_a_LIBADD = ../lib/libcompat.a
++LDADD = $(top_builddir)/lib/libcompat.la
  
  lib_LTLIBRARIES = libsrs_alt.la
- libsrs_alt_la_LDFLAGS = -version-info 0:5
+ libsrs_alt_la_LDFLAGS = -version-info 1:0
+ libsrs_alt_la_SOURCES = address.c hash.c srs_alt.c timestamp.c
+-libsrs_alt_la_LIBADD = ../lib/libcompat.la
+\ Brak znaku nowej linii na koñcu pliku
++libsrs_alt_la_LIBADD = $(top_builddir)/lib/libcompat.la
