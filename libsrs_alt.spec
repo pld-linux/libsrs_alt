@@ -1,14 +1,13 @@
 Summary:	Implementation of the SRS specification
 Summary(pl):	Implementacja specyfikacji SRS
 Name:		libsrs_alt
-%define	_rc	rc1
+%define	_rc	rc1a
 Version:	1.0
 Release:	0.%{_rc}.1
 License:	GPL
 Group:		Libraries
 Source0:	http://srs.mirtol.com/%{name}-%{version}%{_rc}.tar.gz
-# Source0-md5:	66db82f5a0ad6938144b7dff75703aec
-Patch0:		%{name}-am_ac.patch
+# Source0-md5:	3f843b410534980ed2f5f404ce074414
 URL:		http://srs.mirtol.com/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
@@ -49,7 +48,6 @@ Statyczna biblioteka libsrs_alt.
 
 %prep
 %setup -q -n %{name}-%{version}%{_rc}
-%patch0 -p1
 
 %build
 %{__libtoolize}
