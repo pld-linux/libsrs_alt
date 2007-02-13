@@ -1,5 +1,5 @@
 Summary:	Implementation of the SRS specification
-Summary(pl.UTF-8):   Implementacja specyfikacji SRS
+Summary(pl.UTF-8):	Implementacja specyfikacji SRS
 Name:		libsrs_alt
 %define	_rc	rc1a
 Version:	1.0
@@ -24,7 +24,7 @@ adresem http://spf.pobox.com/srs.html.
 
 %package devel
 Summary:	Header files for libsrs_alt library
-Summary(pl.UTF-8):   Pliki nagłówkowe biblioteki libsrs_alt
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libsrs_alt
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -36,7 +36,7 @@ Pliki nagłówkowe biblioteki libsrs_alt.
 
 %package static
 Summary:	Static libsrs_alt library
-Summary(pl.UTF-8):   Statyczna biblioteka libsrs_alt
+Summary(pl.UTF-8):	Statyczna biblioteka libsrs_alt
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
