@@ -1,13 +1,12 @@
 Summary:	Implementation of the SRS specification
 Summary(pl.UTF-8):	Implementacja specyfikacji SRS
 Name:		libsrs_alt
-%define	_rc	rc1a
 Version:	1.0
-Release:	0.%{_rc}.1
+Release:	1
 License:	GPL
 Group:		Libraries
-Source0:	http://srs.mirtol.com/%{name}-%{version}%{_rc}.tar.gz
-# Source0-md5:	3f843b410534980ed2f5f404ce074414
+Source0:	http://srs.mirtol.com/%{name}-%{version}.tar.bz2
+# Source0-md5:	6d1539eeba08dffe83f92ac38e229dda
 URL:		http://srs.mirtol.com/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
@@ -47,7 +46,7 @@ Static libsrs_alt library.
 Statyczna biblioteka libsrs_alt.
 
 %prep
-%setup -q -n %{name}-%{version}%{_rc}
+%setup -q
 
 %build
 %{__libtoolize}
@@ -72,15 +71,16 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS
-%attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
+%attr(755,root,root) %{_bindir}/srs
+%attr(755,root,root) %{_libdir}/libsrs_alt.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libsrs_alt.so.1
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
+%attr(755,root,root) %{_libdir}/libsrs_alt.so
+%{_libdir}/libsrs_alt.la
 %{_includedir}/*.h
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libsrs_alt.a
