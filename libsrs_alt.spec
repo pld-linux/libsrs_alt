@@ -10,6 +10,7 @@ Source0:	http://srs.mirtol.com/%{name}-%{version}.tar.bz2
 URL:		http://srs.mirtol.com/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
+BuildRequires:	libstdc++-devel
 BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
