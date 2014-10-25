@@ -5,9 +5,9 @@ Version:	1.0
 Release:	2
 License:	GPL
 Group:		Libraries
-Source0:	http://srs.mirtol.com/%{name}-%{version}.tar.bz2
+Source0:	http://opsec.eu/src/srs/%{name}-%{version}.tar.bz2
 # Source0-md5:	6d1539eeba08dffe83f92ac38e229dda
-URL:		http://srs.mirtol.com/
+URL:		http://opsec.eu/src/srs/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
 BuildRequires:	libstdc++-devel
