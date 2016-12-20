@@ -2,7 +2,7 @@ Summary:	Implementation of the SRS specification
 Summary(pl.UTF-8):	Implementacja specyfikacji SRS
 Name:		libsrs_alt
 Version:	1.0
-Release:	4
+Release:	5
 License:	GPL
 Group:		Libraries
 Source0:	http://opsec.eu/src/srs/%{name}-%{version}.tar.bz2
@@ -54,8 +54,7 @@ Statyczna biblioteka libsrs_alt.
 %{__aclocal}
 %{__autoconf}
 %{__automake}
-%configure \
-	--with-base64compat
+%configure
 %{__make}
 
 %install
